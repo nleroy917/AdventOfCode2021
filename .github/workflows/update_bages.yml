@@ -14,7 +14,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2                # clones your repo
         with:
-            ssh-key: ${{ secrets.SSH_KEY }}
+          ssh-key: ${{ secrets.SSH_KEY }}
       - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: ${{ secrets.USER_ID }}                          # your user id, see setup on how to obtain
@@ -27,7 +27,7 @@ jobs:
 #         file: 'README.md'                                                                              # The file that contains the badges
 #         dayRegex: '(?<=https:\/\/img\.shields\.io\/badge\/day%20📅-)[0-9]+(?=-blue)'                   # Regular expression that finds the content of the day badge iun your file.
 #         starsRegex: '(?<=https:\/\/img\.shields\.io\/badge\/stars%20⭐-)[0-9]+(?=-yellow)'             # Regular expression that finds the content of the stars badge iun your file.
-         daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-green)'  # Regular expression that finds the content of the days completed badge iun your file.
+          daysCompletedRegex: '(?<=https:\/\/img\.shields\.io\/badge\/days%20completed-)[0-9]+(?=-green)'  # Regular expression that finds the content of the days completed badge iun your file.
 
       - uses: stefanzweifel/git-auto-commit-action@v4     # Step that pushes these local changes back to your github repo
         with:
