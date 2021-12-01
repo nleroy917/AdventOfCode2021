@@ -1,3 +1,6 @@
+using DSP
+
+# extract measurements
 measurements = Int64[]
 open("input.txt") do f
     for line in eachline(f)
@@ -5,28 +8,33 @@ open("input.txt") do f
     end
 end
 
+# function to count increments
+function count_increments(arr ::Array{Int64}) ::Int64
+    inc = 0
+    for i in 1:1:length(arr)-1
+        if arr[i+1] > arr[i]
+            inc += 1
+        end
+    end
+
+    return inc
+end
+
 ## #
 ## Part A
 ## #
-inc = 0
-
-for i in 1:1:length(measurements)-1
-    if measurements[i+1] > measurements[i]
-        global inc += 1
-    end
-end
-println("Total number of increases: $inc")
+cnt = count_increments(measurements)
+println("Total number of increases: $cnt")
 
 ## #
 ## Part B
 ## #
-inc = 0
+# convolve to get moving sum
+WINDOW = [1, 1, 1]
+msums = conv(measurements, WINDOW)
 
-for i in 1:1:length(measurements)-3
-    win1 = measurements[i] + measurements[i+1] + measurements[i+2]
-    win2 = measurements[i+1] + measurements[i+2] + measurements[i+3]
-    if win2 > win1
-        global inc += 1
-    end
-end
-println("Total number of increases: $inc")
+# cut off first and last 2 from convolution
+# and count the increases
+msums = msums[3:length(msums)-2]
+cnt = count_increments(msums)
+println("Total number of increases: $cnt")
