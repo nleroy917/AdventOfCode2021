@@ -13,7 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2                # clones your repo
-          
+        with:
+            ssh-key: ${{ secrets.SSH_KEY }}
       - uses: joblo2213/aoc-badges-action@v3
         with:
           userid: ${{ secrets.USER_ID }}                          # your user id, see setup on how to obtain
