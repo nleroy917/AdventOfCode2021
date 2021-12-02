@@ -6,3 +6,4 @@ My solutions to the [2021 Advent of Code](https://adventofcode.com/) challenge p
 
 ## Directory
 [Day 01](day01/)  
+[Day 02](day02/)
